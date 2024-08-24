@@ -30,6 +30,7 @@ def handle_frame(data):
 
         analyzed_frame = yoga_analyzer.analyze_pose(frame)
         results = yoga_analyzer.get_results()
+        print(results)
         emit('analysis_result', results)
 
     except Exception as e:
