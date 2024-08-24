@@ -13,6 +13,11 @@ socketio = SocketIO(app, async_mode='gevent')
 
 yoga_analyzer = YogaAnalyzer()
 
+@app.route('/')
+def index():
+    return "WebSocket server is running.", 200
+
+
 @socketio.on('connect')
 def on_connect():
     emit('response', {'message': 'Connected to Flask WebSocket'})
