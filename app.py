@@ -1,7 +1,7 @@
-from gevent import monkey
-monkey.patch_all()
+import eventlet
+eventlet.monkey_patch()
 
-from flask import Flask, jsonify
+from flask import Flask
 from flask_socketio import SocketIO, emit
 import cv2
 import numpy as np
@@ -9,7 +9,7 @@ import base64
 from main import YogaAnalyzer
 
 app = Flask(__name__)
-socketio = SocketIO(app, async_mode='gevent', cors_allowed_origins="*")
+socketio = SocketIO(app, async_mode='eventlet', cors_allowed_origins="*")
 
 yoga_analyzer = YogaAnalyzer()
 
